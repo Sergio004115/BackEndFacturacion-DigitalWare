@@ -3423,17 +3423,24 @@ WHERE  (Ventas.FechaVenta BETWEEN @FechaInicio AND @FechaFinal) AND (DATEDIFF(YE
             this._commandCollection[0].CommandText = @"SELECT DATEDIFF(day, MIN(Ventas.FechaVenta), MAX(Ventas.FechaVenta)) AS diferenciaEntreCompras, MAX(Ventas.FechaVenta) AS UltimaCompra, Clientes.Nombres
 FROM     Ventas INNER JOIN
                   Clientes ON Ventas.IdCliente = Clientes.IdCliente
-WHERE  (Clientes.IdCliente = 'de7f0ca0-cb55-4143-9e93-24ad4bbf0231')
+WHERE  (Clientes.IdCliente = @IdCliente)
 GROUP BY Clientes.Nombres";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IdCliente", global::System.Data.SqlDbType.NVarChar, 100, global::System.Data.ParameterDirection.Input, 0, 0, "IdCliente", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(DataSetVentas.ClientesDataTable dataTable) {
+        public virtual int Fill(DataSetVentas.ClientesDataTable dataTable, string IdCliente) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
+            if ((IdCliente == null)) {
+                throw new global::System.ArgumentNullException("IdCliente");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(IdCliente));
+            }
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
             }
@@ -3445,8 +3452,14 @@ GROUP BY Clientes.Nombres";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual DataSetVentas.ClientesDataTable GetDataEstimacionCompra() {
+        public virtual DataSetVentas.ClientesDataTable GetDataEstimacionCompra(string IdCliente) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
+            if ((IdCliente == null)) {
+                throw new global::System.ArgumentNullException("IdCliente");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(IdCliente));
+            }
             DataSetVentas.ClientesDataTable dataTable = new DataSetVentas.ClientesDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;

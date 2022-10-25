@@ -915,7 +915,7 @@ SELECT IdProducto, Nombre, Precio, Existencia FROM Productos WHERE (IdProducto =
             this._commandCollection[3] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[3].Connection = this.Connection;
             this._commandCollection[3].CommandText = "SELECT IdProducto, Nombre, Precio, Existencia\r\nFROM     Productos\r\nWHERE  (Nombre" +
-                " LIKE @Nombre)";
+                " LIKE @Nombre + \'%\')";
             this._commandCollection[3].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Nombre", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "Nombre", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[4] = new global::System.Data.SqlClient.SqlCommand();

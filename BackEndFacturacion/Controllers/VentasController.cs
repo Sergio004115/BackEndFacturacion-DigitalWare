@@ -61,14 +61,14 @@ namespace BackEndFacturacion.Controllers
             }
         }
 
-        public IHttpActionResult getEstimacionVentar()
+        public IHttpActionResult getEstimacionVentar(string IdCliente)
         {
 
             BaseFacturacion.DataSets.Ventas.DataSetVentas.ClientesDataTable data = new BaseFacturacion.DataSets.Ventas.DataSetVentas.ClientesDataTable();
             BaseFacturacion.DataSets.Ventas.DataSetVentasTableAdapters.ClientesTableAdapter get = new BaseFacturacion.DataSets.Ventas.DataSetVentasTableAdapters.ClientesTableAdapter();
             try
             {
-                data = get.GetDataEstimacionCompra();                
+                data = get.GetDataEstimacionCompra(IdCliente);                
 
                 return Ok(data);
 
@@ -108,7 +108,7 @@ namespace BackEndFacturacion.Controllers
 
                 int actualizarProd = get.UpdateExistenciaProd(existenciaActualizar, value.IdProducto);
                 
-                int Resultado = insert.InsertNewVenta(IdVenta, value.IdProducto, value.Cliente, FechaVenta, value.CantidadProducto, value.TotalVenta);
+                int Resultado = insert.InsertNewVenta(IdVenta, value.IdProducto, value.Cliente, Convert.ToDateTime(FechaVenta.ToString("dd/MM/yyyy")), value.CantidadProducto, value.TotalVenta);
                 return Ok(true);
             }
             catch (Exception ex)

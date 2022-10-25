@@ -26,8 +26,8 @@ namespace BaseFacturacion.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=DESKTOP-3B9U65A\\SQLEXPRESS;Initial Catalog=Facturacion;Integrated Sec" +
-            "urity=True")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=sergioPimiento\\SQLEXPRESS;Initial Catalog=Facturacion;Integrated Secu" +
+            "rity=True")]
         public string BaseFacturacionConnectionString {
             get {
                 return ((string)(this["BaseFacturacionConnectionString"]));
